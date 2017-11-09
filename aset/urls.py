@@ -16,6 +16,21 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from django.contrib.auth import views as auth_views
+
+
+# Load views from multiple apps and clarify which are which
+from core import views as core_views
+from tasks import views as task_views
+
 urlpatterns = [
+    url(r'^$', core_views.index, name="index"),
+    url(r'^accounts/login/$', auth_views.LoginView.as_view()),
+    url(r'^tasks/index/$', task_views.tasks_index, name='tasks_index'),
+    url(r'^tasks/completion/(?P<task_id>[0-9]+)/(?P<staff_id>[0-9]+)$', task_views.tasks_completion,
+        name='tasks_completion'),
+    url(r'^tasks/detail/(?P<task_id>[0-9]+)$', task_views.tasks_details, name='tasks_details'),
+    url(r'^tasks/bystaff/(?P<staff_id>[0-9]+)$', task_views.tasks_bystaff, name='tasks_bystaff'),
     url(r'^admin/', admin.site.urls),
+
 ]

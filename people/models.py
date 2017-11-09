@@ -6,6 +6,7 @@ from django.db import models
 
 from tasks.models import Task
 
+
 # Create your models here.
 class StaffManager(models.Manager):
     """Manager for staff to enforce ordering

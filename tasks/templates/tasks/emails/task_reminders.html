@@ -1,0 +1,37 @@
+{% if combined_list_complete or combined_list_incomplete %}
+<p>This is just an automated reminder that you have {{ combined_list_incomplete|length}} outstanding task{{combined_list_incomplete|length|pluralize}}.</p>
+
+    <table style="border-collapse: collapse; border-color: #ccc;" border="1">
+      <tr>
+        <th style="text-align: left;">Task Name</th>
+        <th style="text-align: left;">Deadline</th>
+        <th style="text-align: left;">Time left</th>
+        <th style="text-align: left;">Status</th>
+        <th style="text-align: left;">Details</th>
+      </tr>
+      {% for task, urgent, overdue in combined_list_incomplete %}
+      <tr style="background: {% cycle '#EDF3FE' '#FFFFFF' %};">
+        <th style="text-align: left; padding: 5px">{{ task.name }}</th>
+        <td style="padding: 5px;">{{ task.deadline }}</td>
+        <td style="padding: 5px;{% if overdue %}color=red;{% endif %}">{{ task.deadline|timeuntil }}</td>
+        {% if overdue %}
+        <td style="padding: 5px; color: red">Overdue<br />{{ task.deadline|timesince }}</td>
+        {% elif urgent %}
+        <td style="padding: 5px; color: red">Urgent</td>
+        {% else %}
+        <td style="padding: 5px;">Pending</td>
+        {% endif %}
+        <td style="padding: 5px;"><a href="{{ base_url }}{% url 'tasks_details' task.id %}">details</a></td>
+      </tr>      
+      {% endfor %}
+    </table>
+    
+    <p>Please click on the links above for more details or to sign off completion of a task.</p>
+    
+{% else %}
+    <p>No tasks are noted for {{ staff }}.</p>
+{% endif %}
+
+{% if urgent_only %}
+<p><strong>This email has only been sent because there are incomplete tasks that are overdue or less than a week from deadline and therefore may be urgent.</strong></p>
+{% endif %}

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ExternalBody(models.Model):
     """Information on External Bodies
 
