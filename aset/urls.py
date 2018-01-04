@@ -25,7 +25,8 @@ from tasks import views as task_views
 
 urlpatterns = [
     url(r'^$', core_views.index, name="index"),
-    #url(r'^accounts/login/$', auth_views.LoginView.as_view()),
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^tasks/index/$', task_views.tasks_index, name='tasks_index'),
     url(r'^tasks/completion/(?P<task_id>[0-9]+)/(?P<staff_id>[0-9]+)$', task_views.tasks_completion,
         name='tasks_completion'),
