@@ -31,7 +31,7 @@ class Task(models.Model):
     """
 
     name = models.CharField(max_length=100)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     details = models.TextField()
     deadline = models.DateTimeField()
     archive = models.BooleanField(default=False)
@@ -87,8 +87,8 @@ class TaskCompletion(models.Model):
     comment an optional comment on completion
 
     """
-    task = models.ForeignKey(Task)
-    staff = models.ForeignKey('people.Staff')
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    staff = models.ForeignKey('people.Staff', on_delete=models.CASCADE)
     comment = models.CharField(max_length=200, default='', blank=True)
     when = models.DateTimeField(auto_now_add=True)
 
