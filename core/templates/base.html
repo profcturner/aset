@@ -200,8 +200,10 @@ To learn how this works, see http://wp.me/PEmnE-Bt
 
 				    	<div class="menu-main-menu-container">
                             <ul id="main_menu" class="nav">
-                                <li id="menu-item-69" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-69"><a href="{% url 'index' %}">Admin Home</a></li>
+                                <li id="menu-item-69" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-69"><a href="{% url 'admin:index' %}">Admin Home</a></li>
                                 <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-18"><a href="{% url 'tasks_index' %}">Tasks</a></li>
+                                <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{% url 'login' %}">Login</a></li>
+                                <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{% url 'logout' %}">Logout</a></li>
                             </ul></div>
 				    </div>
 

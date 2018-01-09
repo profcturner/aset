@@ -27,12 +27,11 @@ urlpatterns = [
     url(r'^$', core_views.index, name="index"),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^accounts/login/$', auth_views.login, name='login'),
     url(r'^tasks/index/$', task_views.tasks_index, name='tasks_index'),
     url(r'^tasks/completion/(?P<task_id>[0-9]+)/(?P<staff_id>[0-9]+)$', task_views.tasks_completion,
         name='tasks_completion'),
     url(r'^tasks/detail/(?P<task_id>[0-9]+)$', task_views.tasks_details, name='tasks_details'),
     url(r'^tasks/bystaff/(?P<staff_id>[0-9]+)$', task_views.tasks_bystaff, name='tasks_bystaff'),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/$', admin.site.urls, name='admin_index'),
 
 ]
