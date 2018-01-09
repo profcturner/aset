@@ -32,6 +32,6 @@ urlpatterns = [
         name='tasks_completion'),
     url(r'^tasks/detail/(?P<task_id>[0-9]+)$', task_views.tasks_details, name='tasks_details'),
     url(r'^tasks/bystaff/(?P<staff_id>[0-9]+)$', task_views.tasks_bystaff, name='tasks_bystaff'),
-    url(r'^admin/$', admin.site.urls, name='admin_index'),
+    url(r'^admin/', admin.site.urls, name='admin_index'),
 
 ]
